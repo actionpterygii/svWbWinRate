@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'howto-dialog',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
+  template: `
+    <h2 mat-dialog-title>使い方</h2>
+    <mat-dialog-content>
+      <ul>
+        <li>「エクスポート」ボタンから現在のデッキ、カウンター、勝敗をファイルとして保存できます。過去のものを保存しておきたいとき、バックアップが欲しい時、カードプールが変わってリセットするときに使えます。</li>
+        <li>「インポート(上書き)」ボタンから過去にエクスポートしたファイルを読み込むことができます。これをすると現在のデータは上書きされます。すべて削除され入れ替わるということです。</li>
+        <li>「デッキ追加」ボタンからデッキを追加できます。追加時にのみ名前を決定できます。そのデッキ内のカウンターは既存のカウンターと同じものが追加されます(カウントは0になります)(デッキがない場合は初期のもの)。</li>
+        <li>「カウンター追加」ボタンから対戦相手のデッキ種別を追加できます。追加時にのみ名前を決定できます。追加すれば、すべてのデッキで追加されます。</li>
+        <li>「初期化」ボタンで初期化できます。全て消えます。</li>
+        <li>「全体合計」のデータはすべてのデッキでの合算です。</li>
+        <li>デッキ名の右のゴミ箱ボタンでデッキのデータを消せます。そのデッキの勝敗記録もすべて消えます。</li>
+        <li>「デッキ合計」のデータはそのデッキ内での合算です。</li>
+        <li>カウントのデータはブラウザ(いまあなたがこのページを開いているアプリ)に保存されます。通常は消えることはないですがキャッシュクリアなどで消えることはあります。</li>
+        <li>各カウンタープラスボタンで勝ち負けの記録を+1、マイナスボタンで-1できます。右端のゴミ箱ボタンでカウンターを削除できます。削除した場合はそのカウンターのデータも消えます。すべてのデッキから消えます。</li>
+        <li>初期値として「デッキ1」が用意されています。名前は途中から変えれないので別の名前にしたい場合は一旦消してからデッキ追加してください</li>
+        <li>【神豆知識】こういう系のGoogle臭いダイアログのうざい広告は閉じるを押さなくても領域外クリック/タップで閉じれる場合が割とあります</li>
+      </ul>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>閉じる</button>
+    </mat-dialog-actions>
+  `
+})
+export class HowToDialogComponent {}

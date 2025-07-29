@@ -1,0 +1,137 @@
+/* ドラッグ中のプレビューを白背景＋影で強調 */
+.cdk-drag-preview {
+  background: #fff;
+  color: #222;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  opacity: 0.98;
+  padding: 0.7em 1.2em;
+  font-weight: bold;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+/* プレースホルダーも白＋点線枠 */
+.cdk-drag-placeholder {
+  border: 2px dashed #bbb;
+  background: #fff;
+  border-radius: 10px;
+  opacity: 0.6;
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+@media (max-width: 600px) {
+  .main,
+  mat-card {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 0.5em !important;
+  }
+
+  mat-toolbar,
+  .cdk-drag-preview,
+  .cdk-drag-placeholder {
+    font-size: 1em !important;
+    padding: 0.5em !important;
+    gap: 0.5em !important;
+  }
+
+  button,
+  .mat-icon-button,
+  .mat-mini-fab {
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+
+  ul {
+    padding-left: 1.2em !important;
+  }
+
+  .toolbar-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: stretch;
+    width: 100%;
+  }
+  .toolbar-buttons button {
+    width: 100%;
+    white-space: normal;
+    font-size: 1em;
+  }
+
+  .counter-list-inner {
+    min-width: 600px;
+  }
+}
+
+.toolbar-buttons {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  /* スマホ時は縦並び・PC時は横並び */
+  .toolbar-buttons {
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: stretch;
+    width: 100%;
+  }
+  .toolbar-buttons button {
+    width: 100%;
+    white-space: normal;
+    font-size: 1em;
+  }
+  .main > div {
+    margin-top: 0em !important;
+  }
+}
+
+.cdk-drag-preview span,
+.cdk-drag-preview button,
+.cdk-drag-placeholder span,
+.cdk-drag-placeholder button {
+  align-self: center;
+}
+
+/* ゴミ箱ボタンも上下中央に揃えるだけでOK */
+.cdk-drag-preview button.mat-icon-button,
+.cdk-drag-placeholder button.mat-icon-button {
+  align-self: center;
+  margin-bottom: 0; /* ←不要なら削除 */
+}
+
+/* カウンター行の親flexコンテナに上下中央揃えを強制 */
+.counter-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.counter-row button[mat-icon-button] {
+  margin-left: 1em;
+}
+
+.counter-list-inner {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 1000px) {
+  .counter-list-outer {
+    overflow-x: auto;
+  }
+}
+
+::ng-deep .mat-mdc-tab-body-content {
+  overflow-x: hidden !important;
+}
