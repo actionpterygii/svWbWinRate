@@ -22,7 +22,7 @@ const DEFAULT_COUNTERS = [
   { title: 'ロイヤル(早め)', storageKey: 'counter3', win: 0, lose: 0 },
   { title: 'ロイヤル(遅め)', storageKey: 'counter4', win: 0, lose: 0 },
   { title: 'ウィッチ(スペル強め)', storageKey: 'counter5', win: 0, lose: 0 },
-  { title: 'ウィッチ(土強め)', storageKey: 'counter6', win: 0, lose: 0 },
+  { title: 'ウィッチ(秘術強め)', storageKey: 'counter6', win: 0, lose: 0 },
   { title: 'ウィッチ(どっちつかず)', storageKey: 'counter7', win: 0, lose: 0 },
   { title: 'ドラゴン(早め)', storageKey: 'counter8', win: 0, lose: 0 },
   { title: 'ドラゴン(遅め)', storageKey: 'counter9', win: 0, lose: 0 },

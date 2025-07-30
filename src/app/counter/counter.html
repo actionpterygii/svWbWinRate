@@ -2,18 +2,18 @@
      style="display: flex; align-items: center; min-height: 50px;"
      (mouseenter)="dragOver.emit()">
   <span
-    style="cursor: grab; padding: 0 0.5em;"
+    class="drag-handle"
     (mousedown)="dragStart.emit($event)"
     (touchstart)="dragStart.emit($event)">
     <mat-icon>drag_indicator</mat-icon>
   </span>
-  <div style="display: flex; align-items: center; gap: 4em; flex: 1;">
-    <span style="min-width: 12em;">{{ title }}</span>
-    <span style="min-width: 7em;">
+  <div class="counter-row-main">
+    <span class="counter-row-title">{{ title }}</span>
+    <span class="counter-row-rate">
       勝率: {{ rateDisplay }}%
     </span>
     <!-- 勝ちボタン群 -->
-    <div style="display: flex; justify-content: space-between; min-width: 9.5em; align-items: center; gap: 1em;">
+    <div class="counter-row-win">
       <button mat-mini-fab color="accent"
         (click)="decrementWin()"
         [disabled]="win === 0">
@@ -25,7 +25,7 @@
       </button>
     </div>
     <!-- 敗けボタン群 -->
-    <div style="display: flex; justify-content: space-between; min-width: 9.5em; align-items: center; gap: 1em;">
+    <div class="counter-row-lose">
       <button mat-mini-fab color="accent"
         (click)="decrementLose()"
         [disabled]="lose === 0">
@@ -37,7 +37,7 @@
       </button>
     </div>
   </div>
-  <button mat-icon-button color="warn" (click)="remove.emit()" style="margin-left: 1em;">
+  <button mat-icon-button color="warn" (click)="remove.emit()" class="delete-btn">
     <mat-icon>delete</mat-icon>
   </button>
 </div>

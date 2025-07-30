@@ -1,0 +1,68 @@
+.counter-row {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+}
+
+.counter-row .drag-handle {
+  cursor: grab;
+  padding: 0 0.5em;
+    touch-action: none;
+
+}
+
+.counter-row-main {
+  display: flex;
+  align-items: center;
+  gap: 4em;
+  flex: 1;
+}
+
+.counter-row-title {
+  min-width: 14em;
+  max-width: 14em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.counter-row-rate {
+  min-width: 7em;
+}
+
+.counter-row-win,
+.counter-row-lose {
+  display: flex;
+  justify-content: space-between;
+  min-width: 9.5em;
+  align-items: center;
+  gap: 1em;
+}
+
+.counter-row .delete-btn {
+  margin-left: 1em;
+}
+
+@media (max-width: 600px) {
+    .counter-row-main {
+  gap: 1em;
+          font-size: 14px;
+
+}
+    .counter-row-title {
+        min-width: 11em;
+        max-width: 11em;
+        font-size: 14px;
+    }
+    .counter-row-rate {
+  min-width: 6em;
+
+}
+.counter-row-win,
+.counter-row-lose {
+  min-width: 9em;
+  gap: 0.5em;
+}
+
+}
