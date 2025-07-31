@@ -61,6 +61,9 @@ export class App {
   draggingIndex: number | null = null;
   overIndex: number | null = null;
 
+  // クラスプロパティとして追加
+  private _touchMoveHandler?: (e: TouchEvent) => void;
+
   constructor(private dialog: MatDialog) {
     this.load();
   }
@@ -234,16 +237,47 @@ export class App {
   // ドラッグ開始
   onDragStart(idx: number, event: MouseEvent | TouchEvent) {
     this.draggingIndex = idx;
-    document.addEventListener('mousemove', this.onDragMove);
-    document.addEventListener('mouseup', this.onDragEnd);
-    document.addEventListener('touchmove', this.onDragMove, { passive: false });
-    document.addEventListener('touchend', this.onDragEnd);
+
+    if (event instanceof TouchEvent) {
+      // スマホ対応: スクロールを防ぎつつドラッグ
+      this._touchMoveHandler = (e: TouchEvent) => {
+        e.preventDefault();
+        this.onDragMove(e);
+      };
+      document.addEventListener('touchmove', this._touchMoveHandler, { passive: false });
+      document.addEventListener('touchend', this.onDragEnd);
+    } else {
+      document.addEventListener('mousemove', this.onDragMove);
+      document.addEventListener('mouseup', this.onDragEnd);
+    }
   }
 
   // ドラッグ移動
   onDragMove = (event: MouseEvent | TouchEvent) => {
-    // ここでドラッグ中の要素の位置を取得し、overIndexを更新
-    // 実装例: 各カウンター行にonDragOver(idx)を呼ぶ
+    let clientY: number;
+    if (event instanceof MouseEvent) {
+      clientY = event.clientY;
+    } else if (event.touches && event.touches.length > 0) {
+      clientY = event.touches[0].clientY;
+    } else {
+      return;
+    }
+
+    // カウンター行のDOMリストを取得
+    const rows = Array.from(document.querySelectorAll('.counter-row')) as HTMLElement[];
+    // 現在のマウス/タッチ位置に一番近い行を探す
+    let closestIdx = 0;
+    let minDist = Infinity;
+    rows.forEach((row, idx) => {
+      const rect = row.getBoundingClientRect();
+      const centerY = rect.top + rect.height / 2;
+      const dist = Math.abs(centerY - clientY);
+      if (dist < minDist) {
+        minDist = dist;
+        closestIdx = idx;
+      }
+    });
+    this.overIndex = closestIdx;
   };
 
   // ドラッグ終了
@@ -253,9 +287,14 @@ export class App {
     }
     this.draggingIndex = null;
     this.overIndex = null;
+
     document.removeEventListener('mousemove', this.onDragMove);
     document.removeEventListener('mouseup', this.onDragEnd);
-    document.removeEventListener('touchmove', this.onDragMove);
+
+    if (this._touchMoveHandler) {
+      document.removeEventListener('touchmove', this._touchMoveHandler);
+      this._touchMoveHandler = undefined;
+    }
     document.removeEventListener('touchend', this.onDragEnd);
   };
 
