@@ -19,8 +19,10 @@ import { HowToDialogComponent } from './howto-dialog.component';
 const DEFAULT_COUNTERS = [
   { title: 'エルフ(リノ)', storageKey: 'counter1', win: 0, lose: 0 },
   { title: 'エルフ(テンポ)', storageKey: 'counter2', win: 0, lose: 0 },
+  { title: 'エルフ(エズディア)', storageKey: 'counter17', win: 0, lose: 0 },
   { title: 'ロイヤル(早め)', storageKey: 'counter3', win: 0, lose: 0 },
   { title: 'ロイヤル(遅め)', storageKey: 'counter4', win: 0, lose: 0 },
+  { title: 'ロイヤル(財宝)', storageKey: 'counter18', win: 0, lose: 0 },
   { title: 'ウィッチ(スペル強め)', storageKey: 'counter5', win: 0, lose: 0 },
   { title: 'ウィッチ(秘術強め)', storageKey: 'counter6', win: 0, lose: 0 },
   { title: 'ウィッチ(どっちつかず)', storageKey: 'counter7', win: 0, lose: 0 },
@@ -28,10 +30,12 @@ const DEFAULT_COUNTERS = [
   { title: 'ドラゴン(遅め)', storageKey: 'counter9', win: 0, lose: 0 },
   { title: 'ナイトメア(早め)', storageKey: 'counter10', win: 0, lose: 0 },
   { title: 'ナイトメア(遅め)', storageKey: 'counter11', win: 0, lose: 0 },
+  { title: 'ナイトメア(ベリアル)', storageKey: 'counter19', win: 0, lose: 0 },
   { title: 'ビショップ(早め)', storageKey: 'counter12', win: 0, lose: 0 },
   { title: 'ビショップ(遅め)', storageKey: 'counter13', win: 0, lose: 0 },
   { title: 'ネメシス(AF)', storageKey: 'counter14', win: 0, lose: 0 },
   { title: 'ネメシス(人形)', storageKey: 'counter15', win: 0, lose: 0 },
+  { title: 'ネメシス(破壊)', storageKey: 'counter20', win: 0, lose: 0 },
   { title: 'ネメシス(どっちつかず)', storageKey: 'counter16', win: 0, lose: 0 }
 ];
 

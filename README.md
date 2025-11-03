@@ -33,6 +33,8 @@ To build the project run:
 ```bash
 ng build
 ```
+browserをdocsに？
+最新以外のmain x jsを削除参照されていない
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
